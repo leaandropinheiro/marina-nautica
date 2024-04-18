@@ -1,32 +1,28 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
-// Fabrica / Factory
-// Singleton
-public class MarinaConexao {
-
-    private static MarinaConexao instancia;
-
-    // Impede de outras classes criar um objeto do tipo Fabrica
-    private MarinaConexao(){
-    }
-
-    public synchronized static MarinaConexao obterInstancia(){
-        if(instancia == null){
-            instancia = new MarinaConexao();
+public class Main {
+    public static void main(String[] args) {
+        Lancha p1 = new Lancha(0,"Tom cruise");
+        Lancha p2 = new Lancha(0,"The Rocky");
+        LanchaDAO lanchaDAO = new LanchaDAO();
+        // UUID
+        //LanchaDAO.criarTabela();
+        //LanchaDAO.inserir(p1);
+        //LanchaDAO.inserir(p2);
+        for(Lancha p : lanchaDAO.obterTodos()){
+            System.out.println(p);
         }
-        return instancia;
-    }
-
-    public Connection conexao(){
-        Connection c = null;
-        try{
-            c = DriverManager.getConnection("jdbc:sqlite:meu_banco.sql");
-        }catch (SQLException e){
-            new RuntimeException("Erro ao conectar no banco de dados.",e);
+        System.out.println("Consulta pelo id 1");
+        Lancha id1 = lanchaDAO.obterPeloId(1);
+        System.out.println(id1);
+        System.out.println("Consulta pelo id 10");
+        Lancha id10 = lanchaDAO.obterPeloId(10);
+        System.out.println(id10);
+        id1.setNome("Pedro Pascal");
+        lanchaDAO.atualizar(id1);
+        System.out.println("Consulta de todas as Lanchas.");
+        for(Lancha p : lanchaDAO.obterTodos()){
+            System.out.println(p);
         }
-        return c;
     }
-
 }
