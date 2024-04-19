@@ -2,14 +2,12 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
-//        Lancha p1 = new Lancha(1,"Antares");
-//        Lancha p2 = new Lancha(2,"Zoro");
+        Lancha p1 = new Lancha(1,"Antares");
+        Lancha p2 = new Lancha(2,"Zoro");
         LanchaDAO lanchaDAO = new LanchaDAO();
-        //UUID
-//        LanchaDAO.criarTabela();
-//        LanchaDAO.inserir(p1);
-//        LanchaDAO.inserir(p2);
-        // excluir a lancha com id 2
+        LanchaDAO.criarTabela();
+        LanchaDAO.inserir(p1);
+        LanchaDAO.inserir(p2);
 
         for(Lancha p : lanchaDAO.obterTodos()){
             System.out.println(p);
