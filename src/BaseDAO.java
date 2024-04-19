@@ -2,7 +2,7 @@ import java.sql.Connection;
 
 public class BaseDAO {
 
-    protected Connection conexao(){
+    protected static Connection conexao(){
         return MarinaConexao.obterInstancia().conexao();
     }
 

@@ -12,7 +12,7 @@ public class LanchaDAO extends BaseDAO{
                                 ,nome text);
             """;
 
-    public void criarTabela(){
+    public static void criarTabela(){
         try(var con = conexao();
             var stat = con.createStatement()){
             stat.execute(CRIAR_TABELA);
@@ -22,7 +22,7 @@ public class LanchaDAO extends BaseDAO{
         }
     }
 
-    public void inserir(Lancha p){
+    public static void inserir(Lancha p){
         String inserir = """
                     insert into Lancha(nome) values(?);
                     """;
@@ -51,9 +51,9 @@ public class LanchaDAO extends BaseDAO{
         }
     }
 
-    public void deletar(long id){
+    public static void deletar(long id){
         String sql = """
-                    delete Lancha where id = ?;
+                    delete Lancha where id = 0;
                     """;
         try(var con = conexao();
             var stat = con.prepareStatement(sql)){
