@@ -36,7 +36,7 @@ public class LanchaDAO extends BaseDAO{
         }
     }
 
-    public void atualizar(Lancha p){
+    public static void atualizar(Lancha p){
         String sql = """
                     update Lancha set nome = ? where id = ?;
                     """;
@@ -65,7 +65,7 @@ public class LanchaDAO extends BaseDAO{
         }
     }
 
-    public List<Lancha> obterTodos(){
+    public static List<Lancha> obterTodos(){
         List<Lancha> lista = new ArrayList<>();
         String sql = """
                     select id, nome from Lancha;
@@ -87,7 +87,7 @@ public class LanchaDAO extends BaseDAO{
         return lista;
     }
 
-    public Lancha obterPeloId(long id){
+    public static Lancha obterPeloId(long id){
         Lancha p = null;
         String sql = """
                     select id, nome from Lancha where id = ?;
