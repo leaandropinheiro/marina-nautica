@@ -9,7 +9,9 @@ public class LanchaDAO extends BaseDAO{
     private final static String CRIAR_TABELA = """
             create table  IF NOT EXISTS Lancha(
                                  id INTEGER PRIMARY KEY
-                                ,nome text);
+                                ,nome text
+                                ,motor text
+                                ,tipo text );
             """;
 
     public static void criarTabela(){

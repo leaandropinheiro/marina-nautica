@@ -1,12 +1,18 @@
 public class Lancha {
+    private String motor;
+
+    private String tipo;
+
     private long id;
     private String nome;
 
     public Lancha(){}
 
-    public Lancha(long id, String nome) {
+    public Lancha(long id, String nome, String motor, String tipo) {
         this.id = id;
         this.nome = nome;
+        this.motor = motor;
+        this.tipo = tipo;
     }
 
     public long getId() {
@@ -30,6 +36,8 @@ public class Lancha {
         return "Lancha{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", motor='" + motor +
+                ", tipo='" + tipo +
                 '}';
     }
 }
