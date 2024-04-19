@@ -40,7 +40,7 @@ public class LanchaDAO extends BaseDAO{
 
     public static void atualizar(Lancha p){
         String sql = """
-                    update Lancha set nome = ? where id = ?;
+                    update Lancha set nome = ? where id = id;
                     """;
         try(var con = conexao();
             var stat = con.prepareStatement(sql)){
@@ -92,7 +92,7 @@ public class LanchaDAO extends BaseDAO{
     public static Lancha obterPeloId(long id){
         Lancha p = null;
         String sql = """
-                    select id, nome from Lancha where id = ?;
+                    select id, nome, motor, tipo from Lancha where id = ?;
                     """;
         try(var con = conexao();
             var stat = con.prepareStatement(sql)){
@@ -103,6 +103,8 @@ public class LanchaDAO extends BaseDAO{
                 p = new Lancha();
                 p.setId(rs.getLong("id"));
                 p.setNome(rs.getString("nome"));
+                p.setMotor(rs.getString("motor"));
+                p.setTipo(rs.getString("tipo"));
             }
         }catch (SQLException e){
             System.out.println("Erro ao consultar Lancha pelo id.");

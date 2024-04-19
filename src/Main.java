@@ -15,12 +15,16 @@ public class Main {
             System.out.println(l);
         }
 
-        System.out.println("Consulta pelo id 1");
-        Lancha lanchaId6 = LanchaDAO.obterPeloId(6);
-        System.out.println(lanchaId6);
+        System.out.println("\nConsulta pelo id 1");
 
-        lanchaId6.setNome("bomba");
-        LanchaDAO.atualizar(lanchaId6);
+        Lancha lanchaId1 = LanchaDAO.obterPeloId(1);
+        System.out.println(lanchaId1);
+
+//        lanchaId1.setNome("bomba");
+//        LanchaDAO.atualizar(lanchaId1);
+
+        lanchaId1.setMotor("MWM");
+        LanchaDAO.atualizar(lanchaId1);
 
         System.out.println("\nConsulta de todas as lanchas após a atualização.");
         todasLanchas = LanchaDAO.obterTodos();

@@ -40,4 +40,10 @@ public class Lancha {
                 ", tipo='" + tipo +
                 '}';
     }
+
+    public static void setMotor(String motor) {
+    }
+
+    public void setTipo(String tipo) {
+    }
 }
